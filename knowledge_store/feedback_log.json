@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "category": "feedback_log",
+    "description": "反馈日志",
+    "version": 3,
+    "created": "2026-05-23T09:51:20.409166+00:00",
+    "updated": "2026-05-23T09:51:22.100068+00:00",
+    "source": "initial"
+  },
+  "entries": {
+    "review_20260523_175122": {
+      "value": {
+        "type": "review_calibration",
+        "paper_length": 20,
+        "total_issues": 4,
+        "accepted_count": 2,
+        "rejected_count": 2,
+        "accepted_categories": [
+          "Discussion逻辑",
+          "引文规范"
+        ],
+        "rejected_categories": [
+          "AI痕迹",
+          "AI痕迹"
+        ],
+        "comment": "AI trace检测过于严格",
+        "timestamp": "2026-05-23T09:51:22.097053+00:00"
+      },
+      "confidence": 1.0,
+      "source": "review_feedback",
+      "updated": "2026-05-23T09:51:22.097053+00:00",
+      "version": 1
+    },
+    "writing_20260523_175122": {
+      "value": {
+        "type": "writing_quality",
+        "section": "discussion",
+        "original_len": 33,
+        "improved_len": 40,
+        "rating": 4,
+        "comment": "改进后的版本更好",
+        "timestamp": "2026-05-23T09:51:22.100068+00:00"
+      },
+      "confidence": 1.0,
+      "source": "writing_feedback",
+      "updated": "2026-05-23T09:51:22.100068+00:00",
+      "version": 1
+    }
+  },
+  "changelog": [
+    {
+      "action": "create",
+      "key": "review_20260523_175122",
+      "old": null,
+      "new": "{'type': 'review_calibration', 'paper_length': 20, 'total_issues': 4, 'accepted_count': 2, 'rejected_count': 2, 'accepted_categories': ['Discussion逻辑', '引文规范'], 'rejected_categories': ['AI痕迹', 'AI痕迹']",
+      "source": "review_feedback",
+      "timestamp": "2026-05-23T09:51:22.097053+00:00"
+    },
+    {
+      "action": "create",
+      "key": "writing_20260523_175122",
+      "old": null,
+      "new": "{'type': 'writing_quality', 'section': 'discussion', 'original_len': 33, 'improved_len': 40, 'rating': 4, 'comment': '改进后的版本更好', 'timestamp': '2026-05-23T09:51:22.100068+00:00'}",
+      "source": "writing_feedback",
+      "timestamp": "2026-05-23T09:51:22.100068+00:00"
+    }
+  ]
+}

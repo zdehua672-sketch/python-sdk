@@ -1,0 +1,441 @@
+{
+  "meta": {
+    "category": "mechanisms",
+    "description": "碳污染物生成/转化机制",
+    "version": 27,
+    "created": "2026-05-23T09:50:52.307788+00:00",
+    "updated": "2026-05-23T09:51:22.091292+00:00",
+    "source": "initial"
+  },
+  "entries": {
+    "test_ch4": {
+      "value": {
+        "pathway": "anaerobic",
+        "factors": [
+          "DO",
+          "temp"
+        ]
+      },
+      "confidence": 0.9,
+      "source": "test",
+      "updated": "2026-05-23T09:50:52.307788+00:00",
+      "version": 1
+    },
+    "c_n_coupling_pattern": {
+      "value": "TOC与TN/铵态氮相关",
+      "confidence": 0.95,
+      "source": "MechanismKB",
+      "updated": "2026-05-23T09:51:22.066566+00:00",
+      "version": 3
+    },
+    "c_n_coupling_mechanism": {
+      "value": "碳氮耦合是污水管道生物转化的核心过程。有机碳降解释放含氮有机物中的氮（氨化作用），使NH4+浓度升高。同时，反硝化过程需要有机碳作为电子供体，C/N比直接影响脱氮效率(C/N>5时脱氮效率高)。碳氮的协同转化反映了管道中微生物群落的整体代谢活性。",
+      "confidence": 0.95,
+      "source": "MechanismKB",
+      "updated": "2026-05-23T09:51:22.067562+00:00",
+      "version": 3
+    },
+    "c_n_coupling_references": {
+      "value": [],
+      "confidence": 0.95,
+      "source": "MechanismKB",
+      "updated": "2026-05-23T09:51:22.068583+00:00",
+      "version": 3
+    },
+    "do_ch4_pattern": {
+      "value": "DO与CH4负相关",
+      "confidence": 0.95,
+      "source": "MechanismKB",
+      "updated": "2026-05-23T09:51:22.068583+00:00",
+      "version": 3
+    },
+    "do_ch4_mechanism": {
+      "value": "溶解氧(DO)浓度是控制管道中产甲烷过程的关键因素。当DO<0.5 mg/L时，管道进入严格厌氧状态，产甲烷古菌活性达到最高，通过乙酸发酵和CO2/H2还原两条途径将有机碳转化为CH4。相反，当DO>2 mg/L时，好氧微生物通过有氧呼吸将有机碳氧化为CO2，产甲烷过程被完全抑制。",
+      "confidence": 0.95,
+      "source": "MechanismKB",
+      "updated": "2026-05-23T09:51:22.069601+00:00",
+      "version": 3
+    },
+    "do_ch4_references": {
+      "value": [
+        "Guisasola et al. (2008)报道城市污水管道中厌氧段的产甲烷活动可降解50%以上的有机碳",
+        "Jiang et al. (2011)指出管道系统是城市温室气体排放的重要来源"
+      ],
+      "confidence": 0.95,
+      "source": "MechanismKB",
+      "updated": "2026-05-23T09:51:22.069601+00:00",
+      "version": 3
+    },
+    "do_co2_pattern": {
+      "value": "DO与CO2可能正相关或呈复杂关系",
+      "confidence": 0.95,
+      "source": "MechanismKB",
+      "updated": "2026-05-23T09:51:22.069601+00:00",
+      "version": 3
+    },
+    "do_co2_mechanism": {
+      "value": "CO2的来源包括好氧呼吸和厌氧发酵两部分。好氧条件下，异养菌通过三羧酸循环将有机物完全氧化为CO2和H2O。厌氧条件下，产甲烷过程中CO2也作为电子受体被还原为CH4。因此，DO对CO2的影响取决于好氧呼吸产CO2和厌氧产甲烷消耗CO2的平衡。",
+      "confidence": 0.95,
+      "source": "MechanismKB",
+      "updated": "2026-05-23T09:51:22.069601+00:00",
+      "version": 3
+    },
+    "do_co2_references": {
+      "value": [],
+      "confidence": 0.95,
+      "source": "MechanismKB",
+      "updated": "2026-05-23T09:51:22.069601+00:00",
+      "version": 3
+    },
+    "seasonal_pattern": {
+      "value": "冬春差异",
+      "confidence": 0.95,
+      "source": "MechanismKB",
+      "updated": "2026-05-23T09:51:22.075401+00:00",
+      "version": 3
+    },
+    "seasonal_mechanism": {
+      "value": "温度是影响微生物代谢活性的主要因素。春季温度升高，水解酸化菌和产甲烷菌的酶活性增强，有机碳转化速率加快，气相碳(CH4+CO2)浓度可能升高。同时，春季降雨增加了管道流量，可能产生稀释效应和冲刷效应——冲刷管壁生物膜和底部沉积物中的有机碳，导致液相TOC升高。两种效应的相对大小决定了净变化方向。",
+      "confidence": 0.95,
+      "source": "MechanismKB",
+      "updated": "2026-05-23T09:51:22.075401+00:00",
+      "version": 3
+    },
+    "seasonal_references": {
+      "value": [],
+      "confidence": 0.95,
+      "source": "MechanismKB",
+      "updated": "2026-05-23T09:51:22.075401+00:00",
+      "version": 3
+    },
+    "spatial_pattern": {
+      "value": "沿程空间变化",
+      "confidence": 0.95,
+      "source": "MechanismKB",
+      "updated": "2026-05-23T09:51:22.075401+00:00",
+      "version": 3
+    },
+    "spatial_mechanism": {
+      "value": "管道中碳污染物的空间分异受功能区排放特征和管道内生化过程共同控制。管口区域氧气充足(O2较高)，好氧呼吸为主，CO2为主要碳气。随着向管道中段和末端推进，O2被微生物消耗逐渐降低，厌氧程度增加，CH4生成比例上升。同时，不同功能区(教学区/生活区/餐饮区)的有机负荷和组成不同，导致碳污染物的初始输入存在空间差异。",
+      "confidence": 0.95,
+      "source": "MechanismKB",
+      "updated": "2026-05-23T09:51:22.075401+00:00",
+      "version": 3
+    },
+    "spatial_references": {
+      "value": [],
+      "confidence": 0.95,
+      "source": "MechanismKB",
+      "updated": "2026-05-23T09:51:22.080400+00:00",
+      "version": 3
+    },
+    "toc_ch4_pattern": {
+      "value": "TOC与CH4正相关",
+      "confidence": 0.95,
+      "source": "MechanismKB",
+      "updated": "2026-05-23T09:51:22.081130+00:00",
+      "version": 3
+    },
+    "toc_ch4_mechanism": {
+      "value": "TOC代表污水中有机碳的总量，是产甲烷过程的底物来源。TOC浓度越高，可供水解酸化菌利用的有机底物越充足，进而为产甲烷古菌提供更多的乙酸和H2/CO2底物，促进CH4的生成。但在高TOC条件下，有机酸积累导致pH下降，可能抑制产甲烷活性。",
+      "confidence": 0.95,
+      "source": "MechanismKB",
+      "updated": "2026-05-23T09:51:22.081130+00:00",
+      "version": 3
+    },
+    "toc_ch4_references": {
+      "value": [],
+      "confidence": 0.95,
+      "source": "MechanismKB",
+      "updated": "2026-05-23T09:51:22.081130+00:00",
+      "version": 3
+    },
+    "section_一_气相碳污染物生成机制": {
+      "value": {
+        "title": "一、气相碳污染物生成机制",
+        "content": "### 1.1 甲烷(CH4)生成机制\n\n**厌氧产甲烷途径：**\n```\n有机物 → 水解酸化 → 乙酸/CO2+H2 → CH4\n         (水解菌)    (产乙酸菌)    (产甲烷菌)\n```\n\n**关键驱动因素：**\n- DO < 0.5 mg/L：严格厌氧条件，产甲烷菌活性最高\n- 温度：中温(35°C)最适宜，温度每升高10°C产甲烷速率约增加2-3倍\n- pH：6.8-7.2最适宜产甲烷\n- TOC/COD：有机负荷越高，底物越充足\n- HRT：水力停留时间越长，厌氧程度越高\n\n**可引用文献/知识：**\n- Guisasola et al. (2008): 污水管道中产甲烷可去除50%以上的有机碳\n- Jiang et al. (2011): 管道系统贡献了城市碳排放的显著比例\n- Sun et al. (2021): 管道中CH4浓度与DO呈显著负相关\n\n### 1.2 二氧化碳(CO2)生成机制\n\n**好氧呼吸途径：**\n```\n有机物 + O2 → CO2 + H2O + 能量\n (好氧微生物)\n```\n\n**碳酸盐平衡：**\n```\nCO2 + H2O ↔ H2CO3 ↔ H+ + HCO3- ↔ 2H+ + CO3²-\n```\n- pH < 6.3: 以溶解CO2和H2CO3为主\n- pH 6.3-10.3: 以HCO3-为主\n- pH > 10.3: 以CO3²-为主\n\n### 1.3 氧气(O2)消耗机制\n\n**好氧呼吸消耗：**\n- 微生物好氧代谢直接消耗\n- 有机物氧化分解消耗\n- 化学氧化（如H2S被O2氧化）\n\n**管道中O2梯度：**\n- 管口：O2较高（与大气交换）\n- 管中段：O2逐渐降低（微生物消耗）\n- 管末端：O2最低（累积消耗）\n\n---",
+        "source_file": "mechanism-kb.md"
+      },
+      "confidence": 0.95,
+      "source": "mechanism-kb.md",
+      "updated": "2026-05-23T09:51:22.086158+00:00",
+      "version": 3
+    },
+    "section_二_液相碳污染物赋存机制": {
+      "value": {
+        "title": "二、液相碳污染物赋存机制",
+        "content": "### 2.1 TOC/DOC/POC关系\n\n```\nTOC = DOC + POC\n其中 DOC = 腐殖质 + 蛋白质 + 碳水化合物 + 低分子有机酸\n      POC = 颗粒态有机物\n```\n\n**沿程变化规律：**\n- 上游：TOC较高（新鲜有机物输入）\n- 中游：DOC/POC比值变化（颗粒沉降+溶解）\n- 下游：DOC可能升高（POC水解产物）\n\n### 2.2 COD与TOC关系\n\n**理论关系：**\n```\nCOD = k × TOC + b\n```\n- 对于典型城市污水：COD/TOC ≈ 2.5-3.5\n- 如果COD/TOC比值偏高：存在难降解有机物\n- 如果COD/TOC比值偏低：有机物易降解\n\n### 2.3 DO对碳转化的影响\n\n```\nDO > 2 mg/L:  好氧条件 → CO2为主\nDO 0.5-2:     微氧条件 → CO2 + 少量CH4\nDO < 0.5:     厌氧条件 → CH4为主\n```\n\n---",
+        "source_file": "mechanism-kb.md"
+      },
+      "confidence": 0.95,
+      "source": "mechanism-kb.md",
+      "updated": "2026-05-23T09:51:22.086158+00:00",
+      "version": 3
+    },
+    "section_三_固相碳污染物赋存机制": {
+      "value": {
+        "title": "三、固相碳污染物赋存机制",
+        "content": "### 3.1 管道沉积物有机碳\n\n**来源：**\n- 悬浮颗粒沉降\n- 生物膜脱落\n- 管壁腐蚀产物\n\n**赋存特征：**\n- 上层：新鲜有机物，活性高\n- 中层：半降解有机物\n- 下层：稳定化有机物\n\n### 3.2 生物膜碳\n\n**结构：**\n```\n外层：好氧微生物（消耗O2，产生CO2）\n中层：兼性厌氧微生物\n内层：严格厌氧微生物（产CH4）\n```\n\n---",
+        "source_file": "mechanism-kb.md"
+      },
+      "confidence": 0.95,
+      "source": "mechanism-kb.md",
+      "updated": "2026-05-23T09:51:22.086158+00:00",
+      "version": 3
+    },
+    "section_四_碳氮耦合机制": {
+      "value": {
+        "title": "四、碳氮耦合机制",
+        "content": "### 4.1 C-N耦合路径\n\n```\n有机碳降解 → NH4+释放 → 硝化（好氧）→ NO3-\n                              ↓\n                        反硝化（厌氧）→ N2\n                              ↑\n                    需要有机碳作为电子供体\n```\n\n**关键关系：**\n- C/N比影响脱氮效率\n- C/N > 5: 脱氮效率高\n- C/N < 3: 碳源不足，脱氮受限\n\n### 4.2 铵态氮与CH4关系\n\n**机制：**\n- NH4+浓度高 → 有机物含量高 → 厌氧产CH4底物充足\n- 但NH4+浓度过高(>1000 mg/L)可能抑制产甲烷菌\n\n---",
+        "source_file": "mechanism-kb.md"
+      },
+      "confidence": 0.95,
+      "source": "mechanism-kb.md",
+      "updated": "2026-05-23T09:51:22.086158+00:00",
+      "version": 3
+    },
+    "section_五_空间分异机制": {
+      "value": {
+        "title": "五、空间分异机制",
+        "content": "### 5.1 管网功能区影响\n\n**教学区：**\n- 有机物来源：实验室废水、卫生间\n- 特点：有机负荷波动大\n\n**生活区：**\n- 有机物来源：厨房、卫生间\n- 特点：有机负荷稳定，BOD/COD比高\n\n**餐饮区：**\n- 有机物来源：油脂、食物残渣\n- 特点：有机负荷最高，油脂含量高\n\n### 5.2 沿程变化规律\n\n```\n管口 → 中段 → 末端\n ↓      ↓      ↓\nO2高   O2降   O2低\nCO2低  CO2升  CO2高\nCH4低  CH4升  CH4高\n```\n\n---",
+        "source_file": "mechanism-kb.md"
+      },
+      "confidence": 0.95,
+      "source": "mechanism-kb.md",
+      "updated": "2026-05-23T09:51:22.086158+00:00",
+      "version": 3
+    },
+    "section_六_季节差异机制": {
+      "value": {
+        "title": "六、季节差异机制",
+        "content": "### 6.1 冬季特征\n\n- 温度低 → 微生物活性低 → CH4生成量可能较低\n- 但管道密封 → 温度相对稳定 → 影响可能不如预期大\n- 冬季污水流量可能不同 → 稀释效应\n\n### 6.2 春季特征\n\n- 温度回升 → 微生物活性增强\n- 春雨 → 管道流量增加 → 稀释+冲刷效应\n- 生物膜更新 → 有机碳释放\n\n---",
+        "source_file": "mechanism-kb.md"
+      },
+      "confidence": 0.95,
+      "source": "mechanism-kb.md",
+      "updated": "2026-05-23T09:51:22.086158+00:00",
+      "version": 3
+    },
+    "section_七_discussion可用的机制解释模板": {
+      "value": {
+        "title": "七、Discussion可用的机制解释模板",
+        "content": "### 机制解释句式：\n\n**中文：**\n- \"[指标A]较高可能是因为[机制]，[具体解释]\"\n- \"这一现象可以用[机制/理论]来解释：[展开说明]\"\n- \"从微生物代谢角度来看，[过程]导致了[结果]\"\n- \"[条件]条件下，[微生物/过程]活性[增强/减弱]，进而[影响]\"\n\n**英文：**\n- \"The elevated [A] may be attributed to [mechanism], as [explanation]\"\n- \"This observation can be explained by [mechanism]: [detail]\"\n- \"From a microbial metabolism perspective, [process] resulted in [outcome]\"\n- \"Under [condition], the activity of [process] was [enhanced/reduced], leading to [effect]\"",
+        "source_file": "mechanism-kb.md"
+      },
+      "confidence": 0.95,
+      "source": "mechanism-kb.md",
+      "updated": "2026-05-23T09:51:22.091292+00:00",
+      "version": 3
+    }
+  },
+  "changelog": [
+    {
+      "action": "create",
+      "key": "test_ch4",
+      "old": null,
+      "new": "{'pathway': 'anaerobic', 'factors': ['DO', 'temp']}",
+      "source": "test",
+      "timestamp": "2026-05-23T09:50:52.307788+00:00"
+    },
+    {
+      "action": "create",
+      "key": "c_n_coupling_pattern",
+      "old": null,
+      "new": "TOC与TN/铵态氮相关",
+      "source": "MechanismKB",
+      "timestamp": "2026-05-23T09:50:53.995837+00:00"
+    },
+    {
+      "action": "create",
+      "key": "c_n_coupling_mechanism",
+      "old": null,
+      "new": "碳氮耦合是污水管道生物转化的核心过程。有机碳降解释放含氮有机物中的氮（氨化作用），使NH4+浓度升高。同时，反硝化过程需要有机碳作为电子供体，C/N比直接影响脱氮效率(C/N>5时脱氮效率高)。碳氮的协同转化反映了管道中微生物群落的整体代谢活性。",
+      "source": "MechanismKB",
+      "timestamp": "2026-05-23T09:50:53.995837+00:00"
+    },
+    {
+      "action": "create",
+      "key": "c_n_coupling_references",
+      "old": null,
+      "new": "[]",
+      "source": "MechanismKB",
+      "timestamp": "2026-05-23T09:50:53.995837+00:00"
+    },
+    {
+      "action": "create",
+      "key": "do_ch4_pattern",
+      "old": null,
+      "new": "DO与CH4负相关",
+      "source": "MechanismKB",
+      "timestamp": "2026-05-23T09:50:53.996911+00:00"
+    },
+    {
+      "action": "create",
+      "key": "do_ch4_mechanism",
+      "old": null,
+      "new": "溶解氧(DO)浓度是控制管道中产甲烷过程的关键因素。当DO<0.5 mg/L时，管道进入严格厌氧状态，产甲烷古菌活性达到最高，通过乙酸发酵和CO2/H2还原两条途径将有机碳转化为CH4。相反，当DO>2 mg/L时，好氧微生物通过有氧呼吸将有机碳氧化为CO2，产甲烷过程被完全抑制。",
+      "source": "MechanismKB",
+      "timestamp": "2026-05-23T09:50:53.996911+00:00"
+    },
+    {
+      "action": "create",
+      "key": "do_ch4_references",
+      "old": null,
+      "new": "['Guisasola et al. (2008)报道城市污水管道中厌氧段的产甲烷活动可降解50%以上的有机碳', 'Jiang et al. (2011)指出管道系统是城市温室气体排放的重要来源']",
+      "source": "MechanismKB",
+      "timestamp": "2026-05-23T09:50:53.996911+00:00"
+    },
+    {
+      "action": "create",
+      "key": "do_co2_pattern",
+      "old": null,
+      "new": "DO与CO2可能正相关或呈复杂关系",
+      "source": "MechanismKB",
+      "timestamp": "2026-05-23T09:50:53.996911+00:00"
+    },
+    {
+      "action": "create",
+      "key": "do_co2_mechanism",
+      "old": null,
+      "new": "CO2的来源包括好氧呼吸和厌氧发酵两部分。好氧条件下，异养菌通过三羧酸循环将有机物完全氧化为CO2和H2O。厌氧条件下，产甲烷过程中CO2也作为电子受体被还原为CH4。因此，DO对CO2的影响取决于好氧呼吸产CO2和厌氧产甲烷消耗CO2的平衡。",
+      "source": "MechanismKB",
+      "timestamp": "2026-05-23T09:50:53.996911+00:00"
+    },
+    {
+      "action": "create",
+      "key": "do_co2_references",
+      "old": null,
+      "new": "[]",
+      "source": "MechanismKB",
+      "timestamp": "2026-05-23T09:50:53.996911+00:00"
+    },
+    {
+      "action": "create",
+      "key": "seasonal_pattern",
+      "old": null,
+      "new": "冬春差异",
+      "source": "MechanismKB",
+      "timestamp": "2026-05-23T09:50:53.996911+00:00"
+    },
+    {
+      "action": "create",
+      "key": "seasonal_mechanism",
+      "old": null,
+      "new": "温度是影响微生物代谢活性的主要因素。春季温度升高，水解酸化菌和产甲烷菌的酶活性增强，有机碳转化速率加快，气相碳(CH4+CO2)浓度可能升高。同时，春季降雨增加了管道流量，可能产生稀释效应和冲刷效应——冲刷管壁生物膜和底部沉积物中的有机碳，导致液相TOC升高。两种效应的相对大小决定了净变化方向。",
+      "source": "MechanismKB",
+      "timestamp": "2026-05-23T09:50:53.996911+00:00"
+    },
+    {
+      "action": "create",
+      "key": "seasonal_references",
+      "old": null,
+      "new": "[]",
+      "source": "MechanismKB",
+      "timestamp": "2026-05-23T09:50:53.996911+00:00"
+    },
+    {
+      "action": "create",
+      "key": "spatial_pattern",
+      "old": null,
+      "new": "沿程空间变化",
+      "source": "MechanismKB",
+      "timestamp": "2026-05-23T09:50:53.996911+00:00"
+    },
+    {
+      "action": "create",
+      "key": "spatial_mechanism",
+      "old": null,
+      "new": "管道中碳污染物的空间分异受功能区排放特征和管道内生化过程共同控制。管口区域氧气充足(O2较高)，好氧呼吸为主，CO2为主要碳气。随着向管道中段和末端推进，O2被微生物消耗逐渐降低，厌氧程度增加，CH4生成比例上升。同时，不同功能区(教学区/生活区/餐饮区)的有机负荷和组成不同，导致碳污染物的初始输入存在空间差异。",
+      "source": "MechanismKB",
+      "timestamp": "2026-05-23T09:50:53.996911+00:00"
+    },
+    {
+      "action": "create",
+      "key": "spatial_references",
+      "old": null,
+      "new": "[]",
+      "source": "MechanismKB",
+      "timestamp": "2026-05-23T09:50:54.001911+00:00"
+    },
+    {
+      "action": "create",
+      "key": "toc_ch4_pattern",
+      "old": null,
+      "new": "TOC与CH4正相关",
+      "source": "MechanismKB",
+      "timestamp": "2026-05-23T09:50:54.001911+00:00"
+    },
+    {
+      "action": "create",
+      "key": "toc_ch4_mechanism",
+      "old": null,
+      "new": "TOC代表污水中有机碳的总量，是产甲烷过程的底物来源。TOC浓度越高，可供水解酸化菌利用的有机底物越充足，进而为产甲烷古菌提供更多的乙酸和H2/CO2底物，促进CH4的生成。但在高TOC条件下，有机酸积累导致pH下降，可能抑制产甲烷活性。",
+      "source": "MechanismKB",
+      "timestamp": "2026-05-23T09:50:54.001911+00:00"
+    },
+    {
+      "action": "create",
+      "key": "toc_ch4_references",
+      "old": null,
+      "new": "[]",
+      "source": "MechanismKB",
+      "timestamp": "2026-05-23T09:50:54.001911+00:00"
+    },
+    {
+      "action": "create",
+      "key": "section_一_气相碳污染物生成机制",
+      "old": null,
+      "new": "{'title': '一、气相碳污染物生成机制', 'content': '### 1.1 甲烷(CH4)生成机制\\n\\n**厌氧产甲烷途径：**\\n```\\n有机物 → 水解酸化 → 乙酸/CO2+H2 → CH4\\n         (水解菌)    (产乙酸菌)    (产甲烷菌)\\n```\\n\\n**关键驱动因素：**\\n- DO < 0.5 mg/L：严格厌氧条件，产甲烷菌活性最高\\n-",
+      "source": "mechanism-kb.md",
+      "timestamp": "2026-05-23T09:50:54.006452+00:00"
+    },
+    {
+      "action": "create",
+      "key": "section_二_液相碳污染物赋存机制",
+      "old": null,
+      "new": "{'title': '二、液相碳污染物赋存机制', 'content': '### 2.1 TOC/DOC/POC关系\\n\\n```\\nTOC = DOC + POC\\n其中 DOC = 腐殖质 + 蛋白质 + 碳水化合物 + 低分子有机酸\\n      POC = 颗粒态有机物\\n```\\n\\n**沿程变化规律：**\\n- 上游：TOC较高（新鲜有机物输入）\\n- 中游：DOC/POC比值变化（",
+      "source": "mechanism-kb.md",
+      "timestamp": "2026-05-23T09:50:54.007450+00:00"
+    },
+    {
+      "action": "create",
+      "key": "section_三_固相碳污染物赋存机制",
+      "old": null,
+      "new": "{'title': '三、固相碳污染物赋存机制', 'content': '### 3.1 管道沉积物有机碳\\n\\n**来源：**\\n- 悬浮颗粒沉降\\n- 生物膜脱落\\n- 管壁腐蚀产物\\n\\n**赋存特征：**\\n- 上层：新鲜有机物，活性高\\n- 中层：半降解有机物\\n- 下层：稳定化有机物\\n\\n### 3.2 生物膜碳\\n\\n**结构：**\\n```\\n外层：好氧微生物（消耗O2，产生C",
+      "source": "mechanism-kb.md",
+      "timestamp": "2026-05-23T09:50:54.007450+00:00"
+    },
+    {
+      "action": "create",
+      "key": "section_四_碳氮耦合机制",
+      "old": null,
+      "new": "{'title': '四、碳氮耦合机制', 'content': '### 4.1 C-N耦合路径\\n\\n```\\n有机碳降解 → NH4+释放 → 硝化（好氧）→ NO3-\\n                              ↓\\n                        反硝化（厌氧）→ N2\\n                              ↑\\n        ",
+      "source": "mechanism-kb.md",
+      "timestamp": "2026-05-23T09:50:54.008446+00:00"
+    },
+    {
+      "action": "create",
+      "key": "section_五_空间分异机制",
+      "old": null,
+      "new": "{'title': '五、空间分异机制', 'content': '### 5.1 管网功能区影响\\n\\n**教学区：**\\n- 有机物来源：实验室废水、卫生间\\n- 特点：有机负荷波动大\\n\\n**生活区：**\\n- 有机物来源：厨房、卫生间\\n- 特点：有机负荷稳定，BOD/COD比高\\n\\n**餐饮区：**\\n- 有机物来源：油脂、食物残渣\\n- 特点：有机负荷最高，油脂含量高\\n\\n###",
+      "source": "mechanism-kb.md",
+      "timestamp": "2026-05-23T09:50:54.009473+00:00"
+    },
+    {
+      "action": "create",
+      "key": "section_六_季节差异机制",
+      "old": null,
+      "new": "{'title': '六、季节差异机制', 'content': '### 6.1 冬季特征\\n\\n- 温度低 → 微生物活性低 → CH4生成量可能较低\\n- 但管道密封 → 温度相对稳定 → 影响可能不如预期大\\n- 冬季污水流量可能不同 → 稀释效应\\n\\n### 6.2 春季特征\\n\\n- 温度回升 → 微生物活性增强\\n- 春雨 → 管道流量增加 → 稀释+冲刷效应\\n- 生物膜更新 →",
+      "source": "mechanism-kb.md",
+      "timestamp": "2026-05-23T09:50:54.010470+00:00"
+    },
+    {
+      "action": "create",
+      "key": "section_七_discussion可用的机制解释模板",
+      "old": null,
+      "new": "{'title': '七、Discussion可用的机制解释模板', 'content': '### 机制解释句式：\\n\\n**中文：**\\n- \"[指标A]较高可能是因为[机制]，[具体解释]\"\\n- \"这一现象可以用[机制/理论]来解释：[展开说明]\"\\n- \"从微生物代谢角度来看，[过程]导致了[结果]\"\\n- \"[条件]条件下，[微生物/过程]活性[增强/减弱]，进而[影响]\"\\n\\n**",
+      "source": "mechanism-kb.md",
+      "timestamp": "2026-05-23T09:50:54.010470+00:00"
+    }
+  ]
+}
