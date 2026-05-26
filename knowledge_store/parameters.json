@@ -2,9 +2,9 @@
   "meta": {
     "category": "parameters",
     "description": "系统参数（阈值/权重）",
-    "version": 19,
+    "version": 20,
     "created": "2026-05-23T10:00:06.170206+00:00",
-    "updated": "2026-05-25T08:44:42.668547+00:00",
+    "updated": "2026-05-26T07:52:30.436075+00:00",
     "source": "initial"
   },
   "entries": {
@@ -146,6 +146,36 @@
       "confidence": 0.7,
       "source": "auto_tuning",
       "updated": "2026-05-23T10:06:23.778654+00:00",
+      "version": 1
+    },
+    "score_weight_推理链完整性": {
+      "value": {
+        "weight": 0.1,
+        "description": "推理链完整性"
+      },
+      "confidence": 0.8,
+      "source": "Scorer",
+      "updated": "2026-05-25T10:04:54.881809+00:00",
+      "version": 1
+    },
+    "score_weight_逻辑跳跃": {
+      "value": {
+        "weight": 0.06,
+        "description": "逻辑严谨性"
+      },
+      "confidence": 0.8,
+      "source": "Scorer",
+      "updated": "2026-05-25T10:04:54.881809+00:00",
+      "version": 1
+    },
+    "score_weight_引用质量": {
+      "value": {
+        "weight": 0.08,
+        "description": "DOI有效性+引用类型多样性"
+      },
+      "confidence": 0.8,
+      "source": "Scorer",
+      "updated": "2026-05-26T07:52:30.436075+00:00",
       "version": 1
     }
   },

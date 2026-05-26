@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "category": "methods",
+    "description": "分析方法",
+    "version": 1,
+    "created": "2026-05-26T08:12:45.165373+00:00",
+    "updated": "2026-05-26T08:12:45.165373+00:00",
+    "source": "initial"
+  },
+  "entries": {
+    "pearson": {
+      "value": {
+        "name_zh": "Pearson相关分析",
+        "name_en": "Pearson Correlation",
+        "use_case": "双变量线性相关",
+        "assumption": "正态分布、线性关系",
+        "report_format": "r={r:.3f}, p={p:.4f}"
+      },
+      "confidence": 0.95,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "spearman": {
+      "value": {
+        "name_zh": "Spearman秩相关",
+        "name_en": "Spearman Rank Correlation",
+        "use_case": "非正态数据相关",
+        "assumption": "无",
+        "report_format": "rho={r:.3f}, p={p:.4f}"
+      },
+      "confidence": 0.95,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "ttest": {
+      "value": {
+        "name_zh": "独立样本t检验",
+        "name_en": "Independent t-test",
+        "use_case": "两组均值比较",
+        "assumption": "正态分布、方差齐性",
+        "report_format": "t={t:.2f}, p={p:.4f}"
+      },
+      "confidence": 0.95,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "anova": {
+      "value": {
+        "name_zh": "单因素方差分析",
+        "name_en": "One-way ANOVA",
+        "use_case": "多组均值比较",
+        "assumption": "正态分布、方差齐性",
+        "report_format": "F({df1},{df2})={f:.2f}, p={p:.4f}"
+      },
+      "confidence": 0.95,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "pca": {
+      "value": {
+        "name_zh": "主成分分析",
+        "name_en": "Principal Component Analysis",
+        "use_case": "降维、变量关系探索",
+        "assumption": "变量间存在相关性",
+        "report_format": "前{n}个主成分解释{var:.1f}%方差"
+      },
+      "confidence": 0.9,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "regression": {
+      "value": {
+        "name_zh": "多元线性回归",
+        "name_en": "Multiple Linear Regression",
+        "use_case": "多变量预测",
+        "assumption": "线性、独立、正态残差、方差齐性",
+        "report_format": "R2={r2:.3f}, F({df1},{df2})={f:.2f}, p={p:.4f}"
+      },
+      "confidence": 0.9,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "shapiro": {
+      "value": {
+        "name_zh": "Shapiro-Wilk正态性检验",
+        "name_en": "Shapiro-Wilk Test",
+        "use_case": "检验数据正态性",
+        "assumption": "样本量<5000",
+        "report_format": "W={w:.4f}, p={p:.4f}"
+      },
+      "confidence": 0.95,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "mann_whitney": {
+      "value": {
+        "name_zh": "Mann-Whitney U检验",
+        "name_en": "Mann-Whitney U Test",
+        "use_case": "非正态两组比较",
+        "assumption": "无",
+        "report_format": "U={u:.0f}, p={p:.4f}"
+      },
+      "confidence": 0.95,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    }
+  }
+}

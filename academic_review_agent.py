@@ -21,6 +21,11 @@ except ImportError:
     FeedbackCollector = None
     KnowledgeStore = None
 
+try:
+    from citation_audit import audit_citations_batch
+except ImportError:
+    audit_citations_batch = None
+
 # ============================================================================
 # 数据结构
 # ============================================================================
@@ -1057,7 +1062,7 @@ class LogicalLeapChecker:
                 if density > 1.5:
                     found = [c for c in connectors if c.lower() in para.lower()]
                     issues.append(Issue(
-                        category='逻辑跳跃', severity=Severity.WARNING,
+                        category='逻辑跳跃', severity=Severity.MINOR,
                         section=sec_name, location=f'第{i+1}段',
                         problem=f'逻辑连接词密度过高({density:.1f}/句): {", ".join(found[:3])}',
                         original=para[:80] + '...',
@@ -1096,6 +1101,88 @@ class LogicalLeapChecker:
         return issues
 
 
+class CitationQualityChecker:
+    """引用质量深度审计 - 借鉴PaperSpine的citation_quality_audit"""
+
+    @staticmethod
+    def check(sections, language='en'):
+        issues = []
+        if audit_citations_batch is None:
+            return issues
+
+        # 从正文提取引用列表
+        all_text = ' '.join(sec.body for sec in sections.values() if sec.body)
+        # 匹配 [1], [2,3], (Author, 2020) 等格式的引用
+        ref_patterns = re.findall(r'\[(\d+(?:[-,]\d+)*)\]', all_text)
+        author_refs = re.findall(r'\([A-Z][a-z]+(?:\s+(?:et\s+al\.?|&|and))?\s*,?\s*\d{4}[a-z]?\)', all_text)
+
+        # 从references章节提取完整引用文本
+        ref_section = sections.get('references', None)
+        if ref_section and ref_section.body:
+            ref_lines = [l.strip() for l in ref_section.body.split('\n')
+                         if l.strip() and len(l.strip()) > 20 and not l.startswith('#')]
+        else:
+            ref_lines = []
+
+        if not ref_lines and not ref_patterns:
+            return issues
+
+        # 如果有完整的参考文献列表，做深度审计
+        if ref_lines:
+            try:
+                result = audit_citations_batch(ref_lines, verify=False)
+                overall = result['overall_score']
+                dead = result['dead_count']
+                gap = result.get('gap_analysis', {})
+
+                # 综合评分太低
+                if overall < 50:
+                    issues.append(Issue(
+                        category='引用质量', severity=Severity.MAJOR,
+                        section='references', location='参考文献',
+                        problem=f'引用综合质量偏低(评分{overall}/100)',
+                        original=f'已验证{result["verified_count"]}/{len(ref_lines)}篇',
+                        suggestion='检查DOI有效性、补充近期文献、增加引用类型多样性',
+                        root_cause='引用来源质量不均衡或过于陈旧',
+                        fix_action='优先修复失效DOI，补充近3-5年的文献',
+                        downstream_impact='审稿人可能质疑文献综述的全面性和准确性',
+                        teaching_note='引用不是越多越好，每条引用都应有质量保证。'
+                                      '高质量引用 = 可验证DOI + 近5年 + 类型多样。',
+                    ))
+
+                # 失效DOI
+                if dead > 0:
+                    issues.append(Issue(
+                        category='引用质量', severity=Severity.CRITICAL,
+                        section='references', location='参考文献',
+                        problem=f'{dead}篇文献的DOI无法解析',
+                        original='DOI验证失败',
+                        suggestion='核实DOI或删除失效引用，替换为同主题的有效文献',
+                        root_cause='DOI拼写错误或文献已被撤回',
+                        fix_action='逐一检查失效DOI，通过Crossref或Google Scholar验证',
+                        downstream_impact='读者无法核实引用来源，严重损害论文可信度',
+                        teaching_note='死链DOI是审稿人最容易发现的问题之一。',
+                    ))
+
+                # 引用类型多样性差距
+                for g in gap.get('gaps', []):
+                    issues.append(Issue(
+                        category='引用质量', severity=Severity.MINOR,
+                        section='references', location='参考文献',
+                        problem=f'缺少{g["type"]}类型引用(实际{g["actual"]}，期望{g["expected"]})',
+                        original=f'{g["type"]}占比不足',
+                        suggestion=gap.get('teaching_notes', ['补充相关类型文献'])[0] if gap.get('teaching_notes') else '补充相关类型文献',
+                        root_cause='引用来源不够全面',
+                        fix_action=f'补充{g["type"]}类型的文献',
+                        downstream_impact='引用结构单一，可能遗漏重要视角',
+                    ))
+
+            except Exception as e:
+                logger.debug(f"CitationQualityChecker error: {e}")
+
+        return issues
+
+
 # ============================================================================
 # 综合评分系统
 # ============================================================================
@@ -1103,18 +1190,19 @@ class Scorer:
     """论文质量评分"""
 
     DIMENSIONS = {
-        'SCI格式': {'weight': 0.12, 'description': '格式规范性'},
-        '中文格式': {'weight': 0.08, 'description': '中文格式规范'},
-        '错别字': {'weight': 0.08, 'description': '拼写正确性'},
-        '学术语法': {'weight': 0.08, 'description': '语言学术性'},
-        '引文规范': {'weight': 0.08, 'description': '引用规范性'},
-        '图表规范': {'weight': 0.08, 'description': '图表规范性'},
-        '数据逻辑': {'weight': 0.12, 'description': '数据一致性'},
-        'Discussion逻辑': {'weight': 0.10, 'description': '讨论深度'},
+        'SCI格式': {'weight': 0.10, 'description': '格式规范性'},
+        '中文格式': {'weight': 0.07, 'description': '中文格式规范'},
+        '错别字': {'weight': 0.07, 'description': '拼写正确性'},
+        '学术语法': {'weight': 0.07, 'description': '语言学术性'},
+        '引文规范': {'weight': 0.07, 'description': '引用规范性'},
+        '图表规范': {'weight': 0.07, 'description': '图表规范性'},
+        '数据逻辑': {'weight': 0.10, 'description': '数据一致性'},
+        'Discussion逻辑': {'weight': 0.08, 'description': '讨论深度'},
         'AI痕迹': {'weight': 0.04, 'description': '自然度'},
         '学术重复': {'weight': 0.04, 'description': '原创性'},
-        '推理链完整性': {'weight': 0.10, 'description': '推理链完整性'},
-        '逻辑跳跃': {'weight': 0.06, 'description': '逻辑严谨性'},
+        '推理链完整性': {'weight': 0.08, 'description': '推理链完整性'},
+        '逻辑跳跃': {'weight': 0.05, 'description': '逻辑严谨性'},
+        '引用质量': {'weight': 0.08, 'description': 'DOI有效性+引用类型多样性'},
     }
 
     @classmethod
@@ -1167,6 +1255,7 @@ class AcademicReviewAgent:
         ('学术重复', RepetitionChecker),
         ('推理链完整性', RationaleChecker),
         ('逻辑跳跃', LogicalLeapChecker),
+        ('引用质量', CitationQualityChecker),
     ]
 
     def __init__(self, paper_type='sci', language='auto'):

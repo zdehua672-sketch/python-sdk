@@ -15,6 +15,11 @@ from academic_plot_style import get_label
 from writing_rationale import RationaleMatrix, RationaleRow
 from motivation_thread import MotivationThread, SevenSentenceTest, IntroductionDiscussionMapper
 
+try:
+    from rag_system import RAGEngine
+except ImportError:
+    RAGEngine = None
+
 
 # ============================================================================
 # 1. 领域机制库 - 本课题特定科学机制
@@ -323,11 +328,29 @@ class DiscussionGenerator:
     不是Results的重复，不是空洞的套话
     """
 
-    def __init__(self, analysis_results, captions, rationale_matrix=None):
+    def __init__(self, analysis_results, captions, rationale_matrix=None, rag_engine=None):
         self.results = analysis_results
         self.captions = captions
         self.mechanisms = MechanismKB()
         self.rationale = rationale_matrix or RationaleMatrix()
+        self.rag = rag_engine
+
+    def _search_literature(self, query, max_results=2):
+        """通过RAG检索相关文献，返回引用列表"""
+        if not self.rag:
+            return []
+        try:
+            results = self.rag.retrieve(query, max_results=max_results)
+            refs = []
+            for r in results:
+                title = r.get('title', '')
+                authors = r.get('authors', '')
+                year = r.get('year', '')
+                if title:
+                    refs.append(f'{authors} ({year}) {title}' if authors and year else title)
+            return refs
+        except Exception:
+            return []
 
     def generate(self, language='zh'):
         """生成Discussion全文"""
@@ -492,10 +515,16 @@ class DiscussionGenerator:
                         for ref in mech.get('references', []):
                             lines.append(f'{ref}也报道了类似的相关关系。')
                     else:
-                        lines.append(
-                            f'这一相关关系可能反映了{label_i}和{label_j}之间'
-                            f'存在的某种生物化学耦合机制，具体机理有待进一步研究。'
-                        )
+                        # 尝试RAG检索相关文献
+                        rag_refs = self._search_literature(
+                            f'{label_i} {label_j} {direction}相关 mechanism', max_results=2)
+                        if rag_refs:
+                            lines.append(f'已有研究报道了类似的相关关系，{"; ".join(rag_refs)}。')
+                        else:
+                            lines.append(
+                                f'这一相关关系可能反映了{label_i}和{label_j}之间'
+                                f'存在的某种生物化学耦合机制，具体机理有待进一步研究。'
+                            )
                     lines.append('')
 
                     # 记录推理链
@@ -1087,10 +1116,18 @@ class PaperWriter:
         # Discussion
         print("  → 生成Discussion（含机制解释）...")
         self.rationale = RationaleMatrix()
+        # 初始化RAG引擎（可选）
+        rag = None
+        if RAGEngine:
+            try:
+                rag = RAGEngine()
+            except Exception:
+                pass
         disc_gen = DiscussionGenerator(
             self.analysis_agent.results,
             self.analysis_agent.captions,
             rationale_matrix=self.rationale,
+            rag_engine=rag,
         )
         self.sections['discussion'] = disc_gen.generate(language)
 
@@ -1150,6 +1187,31 @@ class PaperWriter:
 
         print(f"\n论文已保存: {paper_path}")
         print(f"各章节单独文件: {self.output_dir}/section_*.md")
+
+        # 引用质量审计
+        print("  → 执行引用质量审计...")
+        try:
+            from citation_audit import audit_citations_batch
+            # 从论文中提取引用行
+            ref_section = self.sections.get('references', '')
+            if not ref_section:
+                # 从全文中提取括号引用
+                import re as _re
+                all_text = full_paper
+                brackets = _re.findall(r'\[(\d+(?:,\s*\d+)*)\]', all_text)
+                author_refs = _re.findall(r'\([A-Z][a-z]+[^)]*\d{4}[^)]*\)', all_text)
+                ref_lines = author_refs if author_refs else []
+            else:
+                ref_lines = [l.strip() for l in ref_section.split('\n')
+                             if l.strip() and len(l.strip()) > 15 and not l.startswith('#')]
+            if ref_lines:
+                result = audit_citations_batch(ref_lines[:30], verify=False)
+                audit_path = os.path.join(self.output_dir, 'citation_audit.md')
+                with open(audit_path, 'w', encoding='utf-8') as f:
+                    f.write(result['report'])
+                print(f"  → 引用审计完成: 评分{result['overall_score']}/100 → {audit_path}")
+        except Exception as e:
+            print(f"  → 引用审计跳过: {e}")
 
         # 统计
         total_chars = len(full_paper)

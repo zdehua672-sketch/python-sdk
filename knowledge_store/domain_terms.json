@@ -1,0 +1,180 @@
+{
+  "meta": {
+    "category": "domain_terms",
+    "description": "领域术语",
+    "version": 1,
+    "created": "2026-05-26T08:12:45.165373+00:00",
+    "updated": "2026-05-26T08:12:45.165373+00:00",
+    "source": "initial"
+  },
+  "entries": {
+    "DO": {
+      "value": {
+        "term_en": "Dissolved Oxygen",
+        "term_zh": "溶解氧",
+        "unit": "mg/L",
+        "abbr": "DO"
+      },
+      "confidence": 1.0,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "CH4": {
+      "value": {
+        "term_en": "Methane",
+        "term_zh": "甲烷",
+        "unit": "mg/L",
+        "abbr": "CH4"
+      },
+      "confidence": 1.0,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "CO2": {
+      "value": {
+        "term_en": "Carbon Dioxide",
+        "term_zh": "二氧化碳",
+        "unit": "mg/L",
+        "abbr": "CO2"
+      },
+      "confidence": 1.0,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "TOC": {
+      "value": {
+        "term_en": "Total Organic Carbon",
+        "term_zh": "总有机碳",
+        "unit": "mg/L",
+        "abbr": "TOC"
+      },
+      "confidence": 1.0,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "BOD": {
+      "value": {
+        "term_en": "Biochemical Oxygen Demand",
+        "term_zh": "生化需氧量",
+        "unit": "mg/L",
+        "abbr": "BOD"
+      },
+      "confidence": 1.0,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "COD": {
+      "value": {
+        "term_en": "Chemical Oxygen Demand",
+        "term_zh": "化学需氧量",
+        "unit": "mg/L",
+        "abbr": "COD"
+      },
+      "confidence": 1.0,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "TN": {
+      "value": {
+        "term_en": "Total Nitrogen",
+        "term_zh": "总氮",
+        "unit": "mg/L",
+        "abbr": "TN"
+      },
+      "confidence": 1.0,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "TP": {
+      "value": {
+        "term_en": "Total Phosphorus",
+        "term_zh": "总磷",
+        "unit": "mg/L",
+        "abbr": "TP"
+      },
+      "confidence": 1.0,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "EC": {
+      "value": {
+        "term_en": "Electrical Conductivity",
+        "term_zh": "电导率",
+        "unit": "uS/cm",
+        "abbr": "EC"
+      },
+      "confidence": 1.0,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "pH": {
+      "value": {
+        "term_en": "pH Value",
+        "term_zh": "pH值",
+        "unit": "",
+        "abbr": "pH"
+      },
+      "confidence": 1.0,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "TEMP": {
+      "value": {
+        "term_en": "Temperature",
+        "term_zh": "温度",
+        "unit": "C",
+        "abbr": "TEMP"
+      },
+      "confidence": 1.0,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "sewer_system": {
+      "value": {
+        "term_en": "Sewer System",
+        "term_zh": "污水管网",
+        "unit": "",
+        "abbr": ""
+      },
+      "confidence": 1.0,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "campus_sewage": {
+      "value": {
+        "term_en": "Campus Sewage",
+        "term_zh": "校园污水",
+        "unit": "",
+        "abbr": ""
+      },
+      "confidence": 1.0,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "carbon_pollutant": {
+      "value": {
+        "term_en": "Carbon Pollutant",
+        "term_zh": "碳污染物",
+        "unit": "",
+        "abbr": ""
+      },
+      "confidence": 1.0,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    }
+  }
+}

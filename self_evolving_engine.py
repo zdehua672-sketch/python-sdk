@@ -26,6 +26,11 @@ from dataclasses import dataclass, field, asdict
 from collections import Counter
 from copy import deepcopy
 
+try:
+    from revision_audit import audit_revision
+except ImportError:
+    audit_revision = None
+
 
 # ============================================================
 # 1. KnowledgeStore - JSON结构化知识库
@@ -68,7 +73,12 @@ class KnowledgeStore:
         if path.exists():
             with open(path, "r", encoding="utf-8") as f:
                 return json.load(f)
-        return self._default_store(category)
+        # 自动初始化缺失的JSON文件
+        default = self._default_store(category)
+        self.store_dir.mkdir(parents=True, exist_ok=True)
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(default, f, ensure_ascii=False, indent=2)
+        return default
 
     def _default_store(self, category: str) -> dict:
         return {
@@ -894,6 +904,10 @@ class EvolutionEngine:
         quality = self._validate_knowledge_quality()
         report["steps"]["quality_check"] = quality
 
+        # Step 4.5: 修订审计 — 追踪知识库版本间变化
+        revision = self._audit_revision()
+        report["steps"]["revision_audit"] = revision
+
         # Step 5: 生成进化摘要
         summary = self._generate_evolution_summary(report)
         report["summary"] = summary
@@ -1071,6 +1085,62 @@ class EvolutionEngine:
             quality["categories"][cat] = cat_quality
 
         return quality
+
+    def _audit_revision(self) -> dict:
+        """修订审计 — 追踪知识库版本间变化"""
+        if audit_revision is None:
+            return {"status": "skipped", "reason": "revision_audit not available"}
+
+        # 收集当前各知识分类的文本摘要
+        current_parts = []
+        for cat in KnowledgeStore.CATEGORIES:
+            entries = self.store.get(cat)
+            if entries:
+                summary = f"[{cat}] {len(entries)} entries"
+                for key, entry in list(entries.items())[:3]:
+                    if isinstance(entry, dict):
+                        val = entry.get("value", entry.get("description", ""))
+                        if isinstance(val, str):
+                            summary += f"\n  {key}: {val[:60]}"
+                current_parts.append(summary)
+        current_text = '\n\n'.join(current_parts)
+
+        # 与上次快照比较
+        snapshot_path = self.store.store_dir / "revision_history.json"
+        if snapshot_path.exists():
+            try:
+                with open(snapshot_path, 'r', encoding='utf-8') as f:
+                    history = json.load(f)
+                last_snapshot = history.get("last_snapshot", "")
+                if last_snapshot:
+                    result = audit_revision(last_snapshot, current_text)
+                    summary_data = {
+                        "unchanged_ratio": result.unchanged_ratio,
+                        "new_ratio": result.new_ratio,
+                        "shallow_warning": result.shallow_warning,
+                        "paragraphs_original": result.original_paragraphs,
+                        "paragraphs_revised": result.revised_paragraphs,
+                    }
+                    # 保存新快照
+                    history["last_snapshot"] = current_text
+                    history["last_audit"] = summary_data
+                    history["updated"] = datetime.now(timezone.utc).isoformat()
+                    with open(snapshot_path, 'w', encoding='utf-8') as f:
+                        json.dump(history, f, ensure_ascii=False, indent=2)
+                    return summary_data
+            except Exception as e:
+                logger.debug(f"Revision audit error: {e}")
+
+        # 首次运行，保存初始快照
+        snapshot_data = {
+            "last_snapshot": current_text,
+            "last_audit": None,
+            "updated": datetime.now(timezone.utc).isoformat(),
+        }
+        snapshot_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(snapshot_path, 'w', encoding='utf-8') as f:
+            json.dump(snapshot_data, f, ensure_ascii=False, indent=2)
+        return {"status": "initialized", "message": "初始快照已保存，下次进化周期将进行修订审计"}
 
     # --- 资源发现（基于Web搜索） ---
 

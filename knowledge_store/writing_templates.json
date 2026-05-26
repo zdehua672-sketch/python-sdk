@@ -1,0 +1,103 @@
+{
+  "meta": {
+    "category": "writing_templates",
+    "description": "写作模板（句式/结构/讨论）",
+    "version": 1,
+    "created": "2026-05-26T08:12:45.165373+00:00",
+    "updated": "2026-05-26T08:12:45.165373+00:00",
+    "source": "initial"
+  },
+  "entries": {
+    "intro_opening_zh": {
+      "value": "近年来，{领域}受到了广泛关注。{具体问题}是该领域的关键问题之一。",
+      "confidence": 0.8,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "intro_gap_zh": {
+      "value": "然而，现有研究主要集中在{方向}，对{空白}的研究仍然不足。",
+      "confidence": 0.8,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "intro_objective_zh": {
+      "value": "本研究旨在{目标}，以{方法}为核心手段，探究{问题}。",
+      "confidence": 0.8,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "result_finding_zh": {
+      "value": "结果表明，{变量1}与{变量2}呈显著{方向}相关(r={值}, p<{值})。",
+      "confidence": 0.8,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "result_comparison_zh": {
+      "value": "{组1}的{指标}显著{高于/低于}{组2}({值} vs {值}, p={值})。",
+      "confidence": 0.8,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "discussion_mechanism_zh": {
+      "value": "这一现象的可能机制是{机制描述}。{引用}也报道了类似的发现。",
+      "confidence": 0.8,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "discussion_contrast_zh": {
+      "value": "与{引用}的研究不同，本研究发现{差异}。这一差异可能源于{原因}。",
+      "confidence": 0.8,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "discussion_significance_zh": {
+      "value": "本研究的发现对{领域}具有{理论/实践}意义，为{应用}提供了{依据/参考}。",
+      "confidence": 0.7,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "conclusion_summary_zh": {
+      "value": "本研究通过{方法}，系统分析了{对象}，发现{核心发现}。",
+      "confidence": 0.8,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "intro_opening_en": {
+      "value": "{Topic} has attracted considerable attention in recent years.",
+      "confidence": 0.8,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "intro_gap_en": {
+      "value": "However, existing studies have primarily focused on {direction}, leaving {gap} largely unexplored.",
+      "confidence": 0.8,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "result_finding_en": {
+      "value": "The results revealed a significant {positive/negative} correlation between {var1} and {var2} (r={value}, p<{value}).",
+      "confidence": 0.8,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    },
+    "discussion_mechanism_en": {
+      "value": "A possible mechanism underlying this phenomenon is {mechanism}.",
+      "confidence": 0.8,
+      "source": "hardcoded",
+      "updated": "2026-05-26T08:12:45.165373+00:00",
+      "version": 1
+    }
+  }
+}
